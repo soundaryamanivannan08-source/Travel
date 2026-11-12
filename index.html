@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stackly</title>
+  <meta name="description" content="Discover and book the world's finest boutique resorts, overwater villas, and alpine chalets with transparent price estimation and exclusive offers.">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="preloader-active">
+
+  <!-- ===================================================================
+       0. Luxury Travel Preloader Animation
+       =================================================================== -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-content">
+      <div class="preloader-logo-wrap">
+        <div class="preloader-ring"></div>
+        <div class="preloader-ring-pulse"></div>
+        <img src="assets/stackly_logo_transparent.png" alt="Stackly Wanderlust" class="preloader-logo">
+      </div>
+      <div class="preloader-progress-track">
+        <div class="preloader-progress-bar" id="preloaderBar"></div>
+      </div>
+      <div class="preloader-text-wrap">
+        <span class="preloader-text">Curating Luxury Escapes</span>
+        <span class="preloader-dots"><span>.</span><span>.</span><span>.</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       1. Header & Navigation Bar
+       =================================================================== -->
+  <header class="header" id="mainHeader">
+    <div class="container nav-container">
+      <a href="#" class="logo" aria-label="Home">
+        <img src="assets/stackly_logo_transparent.png" alt="Logo" class="logo-img">
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="#heroSection" class="nav-link active">Home</a>
+        <a href="#aboutSection" class="nav-link">About</a>
+        <a href="#servicesSection" class="nav-link">Service</a>
+        <a href="#blogSection" class="nav-link">Blog</a>
+        <a href="#contactSection" class="nav-link">Contact</a>
+        <a href="#loginModal" class="nav-link btn-open-login" id="navLinkLogin">Login</a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <!-- Wishlist Button with Live Counter Badge -->
+        <button class="btn-wishlist-nav" id="btnWishlistNav" aria-label="Open Wishlist Drawer" title="View Wishlist">
+          <i class="fa-solid fa-heart"></i>
+          <span class="wishlist-count-badge" id="wishlistBadge">0</span>
+        </button>
+
+        <!-- Login / User Button -->
+        <button class="btn btn-primary btn-sm btn-open-login" id="navLoginBtn">
+          <i class="fa-solid fa-user"></i> Login
+        </button>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Slide Drawer -->
+  <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation">
+    <div class="mobile-nav-header">
+      <div class="logo">
+        <img src="assets/stackly_logo_transparent.png" alt="Logo" class="logo-img">
+      </div>
+      <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close Mobile Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="#heroSection" class="mobile-nav-link"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="#aboutSection" class="mobile-nav-link"><i class="fa-solid fa-circle-info"></i> About</a>
+      <a href="#servicesSection" class="mobile-nav-link"><i class="fa-solid fa-bell-concierge"></i> Service</a>
+      <a href="#blogSection" class="mobile-nav-link"><i class="fa-solid fa-newspaper"></i> Blog</a>
+      <a href="#contactSection" class="mobile-nav-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+      <a href="javascript:void(0)" class="mobile-nav-link" id="mobileDrawerWishlist"><i class="fa-solid fa-heart" style="color: var(--accent-rose);"></i> Wishlist <span class="badge badge-hot" id="mobileWishlistBadge" style="margin-left: auto; font-size: 0.72rem; padding: 2px 8px;">0</span></a>
+      <a href="#loginModal" class="mobile-nav-link btn-open-login"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
+    </div>
+  </aside>
+
+  <!-- Shared Backdrop Blur -->
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+
+  <!-- ===================================================================
+       2. Hero Section with Destination Search Engine
+       =================================================================== -->
+  <section class="hero" id="heroSection">
+    <div class="hero-overlay-shapes"></div>
+    <div class="container hero-content">
+      
+      <div class="hero-badge" data-aos="fade-down" data-aos-duration="600">
+        <i class="fa-solid fa-award"></i> The World's Most Extraordinary Stays & Experiences
+      </div>
+
+      <h1 class="hero-title" data-aos="fade-up" data-aos-duration="800">
+        Journey Beyond the Ordinary, <br>
+        <span class="gradient-text">Stay in Unmatched Luxury</span>
+      </h1>
+
+      <p class="hero-description" data-aos="fade-up" data-aos-duration="900" data-aos-delay="100">
+        Curated overwater villas, private alpine chalets, and historic city sanctuaries. 
+        Instant live date validation, transparent pricing, and exclusive perks.
+      </p>
+
+      <!-- Floating Interactive Search Console -->
+      <div class="search-widget-wrapper" data-aos="zoom-in" data-aos-duration="900" data-aos-delay="200">
+        
+        <!-- Search Category Tabs -->
+        <div class="search-tabs">
+          <button class="search-tab active" type="button">
+            <i class="fa-solid fa-bed"></i> Luxury Stays & Resorts
+          </button>
+          <button class="search-tab" type="button" onclick="window.location.href='404.html'">
+            <i class="fa-solid fa-plane"></i> Flights
+          </button>
+          <button class="search-tab" type="button" onclick="window.location.href='404.html'">
+            <i class="fa-solid fa-umbrella-beach"></i> Curated Packages
+          </button>
+        </div>
+
+        <!-- Search Input Fields Grid -->
+        <div class="search-grid">
+          
+          <!-- Destination Field with Autocomplete -->
+          <div class="search-field">
+            <div class="search-label">
+              <i class="fa-solid fa-location-dot"></i> Where to?
+            </div>
+            <input type="text" id="heroDestInput" class="search-input" placeholder="Search Bali, Paris, Swiss Alps..." autocomplete="off">
+            <div class="autocomplete-dropdown" id="heroAutocomplete"></div>
+          </div>
+
+          <!-- Check-in Date Field -->
+          <div class="search-field">
+            <div class="search-label">
+              <i class="fa-regular fa-calendar"></i> Check-In
+            </div>
+            <input type="date" id="heroCheckIn" class="search-input">
+          </div>
+
+          <!-- Check-out Date Field -->
+          <div class="search-field">
+            <span class="date-nights-tag" id="searchNightsTag">3 nights</span>
+            <div class="search-label">
+              <i class="fa-regular fa-calendar-check"></i> Check-Out
+            </div>
+            <input type="date" id="heroCheckOut" class="search-input">
+          </div>
+
+          <!-- Guests & Rooms Popover Selector -->
+          <div class="search-field">
+            <div class="search-label">
+              <i class="fa-solid fa-user-group"></i> Guests & Rooms
+            </div>
+            <div class="guest-selector-trigger" id="heroGuestTrigger">
+              <span class="guest-selector-display" id="heroGuestDisplay">2 Adults · 0 Children · 1 Room</span>
+              <i class="fa-solid fa-angle-down" style="color: var(--slate-400); font-size: 0.85rem;"></i>
+            </div>
+
+            <!-- Popover Menu -->
+            <div class="guest-popover" id="heroGuestPopover">
+              <!-- Adults -->
+              <div class="guest-row">
+                <div>
+                  <div class="guest-info-title">Adults</div>
+                  <div class="guest-info-desc">Ages 18 or above</div>
+                </div>
+                <div class="guest-stepper" data-type="adults">
+                  <button type="button" class="step-btn btn-step-minus" aria-label="Decrease Adults"><i class="fa-solid fa-minus"></i></button>
+                  <span class="step-count">2</span>
+                  <button type="button" class="step-btn btn-step-plus" aria-label="Increase Adults"><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+
+              <!-- Children -->
+              <div class="guest-row">
+                <div>
+                  <div class="guest-info-title">Children</div>
+                  <div class="guest-info-desc">Ages 0 to 17</div>
+                </div>
+                <div class="guest-stepper" data-type="children">
+                  <button type="button" class="step-btn btn-step-minus" disabled aria-label="Decrease Children"><i class="fa-solid fa-minus"></i></button>
+                  <span class="step-count">0</span>
+                  <button type="button" class="step-btn btn-step-plus" aria-label="Increase Children"><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+
+              <!-- Rooms -->
+              <div class="guest-row">
+                <div>
+                  <div class="guest-info-title">Rooms</div>
+                  <div class="guest-info-desc">Total suites / chalets</div>
+                </div>
+                <div class="guest-stepper" data-type="rooms">
+                  <button type="button" class="step-btn btn-step-minus" aria-label="Decrease Rooms"><i class="fa-solid fa-minus"></i></button>
+                  <span class="step-count">1</span>
+                  <button type="button" class="step-btn btn-step-plus" aria-label="Increase Rooms"><i class="fa-solid fa-plus"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Search Button -->
+          <button type="button" class="btn btn-primary search-submit-btn" id="heroSearchBtn">
+            <i class="fa-solid fa-magnifying-glass"></i> Search Stays
+          </button>
+        </div>
+
+        <!-- Live Price Estimation Indicator in Search Console -->
+        <div class="live-estimation-preview">
+          <div class="estimation-left">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Instant Rate Estimation & Best Price Guarantee with Free 48hr Cancellation</span>
+          </div>
+          <div class="estimation-right">
+            <span style="color: var(--slate-500); font-size: 0.82rem;">Est. Average:</span>
+            <div class="estimation-price-box" id="heroEstimatePrice">
+              <span>$660</span> for 3N · 1R
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Destination Shortcut Tags -->
+      <div class="hero-quick-tags" data-aos="fade-up" data-aos-delay="300">
+        <span class="quick-tag-label"><i class="fa-solid fa-fire" style="color: #facc15;"></i> Trending Searches:</span>
+        <button class="quick-tag-btn" data-dest="Bali"><i class="fa-solid fa-umbrella-beach"></i> Bali</button>
+        <button class="quick-tag-btn" data-dest="Maldives"><i class="fa-solid fa-water"></i> Maldives</button>
+        <button class="quick-tag-btn" data-dest="Paris"><i class="fa-solid fa-archway"></i> Paris</button>
+        <button class="quick-tag-btn" data-dest="Swiss Alps"><i class="fa-solid fa-mountain"></i> Swiss Alps</button>
+        <button class="quick-tag-btn" data-dest="Santorini"><i class="fa-solid fa-landmark"></i> Santorini</button>
+        <button class="quick-tag-btn" data-dest="Banff & Lake Louise"><i class="fa-solid fa-tree"></i> Banff</button>
+        <button class="quick-tag-btn" data-dest="Kyoto & Tokyo"><i class="fa-solid fa-torii-gate"></i> Japan</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       3. Trust & Key Stats Banner
+       =================================================================== -->
+  <section class="stats-banner">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="50">
+          <div class="stat-icon"><i class="fa-solid fa-globe"></i></div>
+          <div class="stat-info">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Luxury Destinations</div>
+          </div>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="150">
+          <div class="stat-icon"><i class="fa-solid fa-hotel"></i></div>
+          <div class="stat-info">
+            <div class="stat-number">10,000+</div>
+            <div class="stat-label">Handpicked Stays</div>
+          </div>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="250">
+          <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
+          <div class="stat-info">
+            <div class="stat-number">4.95 / 5</div>
+            <div class="stat-label">Average Guest Rating</div>
+          </div>
+        </div>
+        <div class="stat-item" data-aos="fade-up" data-aos-delay="350">
+          <div class="stat-icon"><i class="fa-solid fa-user-check"></i></div>
+          <div class="stat-info">
+            <div class="stat-number">2.4M+</div>
+            <div class="stat-label">Delighted Travelers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       4. Popular Destinations Section
+       =================================================================== -->
+  <section class="destinations-section" id="destinationsSection">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fa-solid fa-compass"></i> Iconic Escapes</span>
+        <h2 class="section-title">Popular Destinations Around the Globe</h2>
+        <p class="section-subtitle">
+          From sun-drenched private islands to breathtaking alpine peaks, explore world-renowned destinations curated by travel connoisseurs.
+        </p>
+      </div>
+
+      <!-- Destination Category Pills -->
+      <div class="destination-filter-pills" id="destinationPills" data-aos="fade-up" data-aos-delay="100">
+        <button class="dest-filter-btn active" data-cat="all"><i class="fa-solid fa-globe"></i> All Destinations</button>
+        <button class="dest-filter-btn" data-cat="beach"><i class="fa-solid fa-umbrella-beach"></i> Beach & Islands</button>
+        <button class="dest-filter-btn" data-cat="city"><i class="fa-solid fa-city"></i> World Metropolises</button>
+        <button class="dest-filter-btn" data-cat="mountain"><i class="fa-solid fa-mountain-sun"></i> Mountain & Nature</button>
+        <button class="dest-filter-btn" data-cat="culture"><i class="fa-solid fa-landmark"></i> Cultural Heritage</button>
+      </div>
+
+      <!-- Dynamic Destinations Grid -->
+      <div class="destinations-grid" id="destinationsGrid">
+        <!-- Injected via JavaScript data.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       5. Special Promotional Offers & Coupon Codes
+       =================================================================== -->
+  <section class="offers-section" id="offersSection">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag" style="background: #fee2e2; color: #dc2626; border-color: rgba(220,38,38,0.2);">
+          <i class="fa-solid fa-percent"></i> Limited-Time Offers
+        </span>
+        <h2 class="section-title">Exclusive Member Deals & Promo Codes</h2>
+        <p class="section-subtitle">
+          Copy these limited-time coupon codes and unlock VIP savings, complimentary champagne breakfasts, and room upgrades.
+        </p>
+      </div>
+
+      <!-- Dynamic Promotional Offers Grid -->
+      <div class="offers-grid" id="offersGrid">
+        <!-- Injected via JavaScript data.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       6. Featured Hotels & Filter Console
+       =================================================================== -->
+  <section class="hotels-section" id="servicesSection">
+    <div id="hotelsSection" style="position: relative; top: -80px; visibility: hidden;"></div>
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fa-solid fa-hotel"></i> Handpicked Selection</span>
+        <h2 class="section-title">Featured Luxury Hotels & Resorts</h2>
+        <p class="section-subtitle">
+          Immerse yourself in unrivaled hospitality. Filter by destination, price range, guest ratings, and verified resort amenities.
+        </p>
+      </div>
+
+      <!-- Filter Controls Toolbar -->
+      <div class="hotel-filters-toolbar" data-aos="fade-up" data-aos-delay="100">
+        
+        <!-- Filters Top Row -->
+        <div class="filters-top-row">
+          
+          <!-- Live Text Search -->
+          <div class="filter-input-group">
+            <label for="hotelSearchInput"><i class="fa-solid fa-magnifying-glass"></i> Search Name or City</label>
+            <input type="text" id="hotelSearchInput" placeholder="e.g. Ayana, Paris, Cliffside...">
+          </div>
+
+          <!-- Destination Select -->
+          <div class="filter-input-group">
+            <label for="hotelDestSelect"><i class="fa-solid fa-location-dot"></i> Destination</label>
+            <select id="hotelDestSelect">
+              <option value="all">All Destinations</option>
+              <!-- Options populated dynamically -->
+            </select>
+          </div>
+
+          <!-- Price Range Slider -->
+          <div class="price-slider-wrapper">
+            <div class="price-range-labels">
+              <span>Max Price Per Night</span>
+              <span id="priceSliderValue" style="color: var(--primary); font-size: 1rem;">$700</span>
+            </div>
+            <input type="range" class="price-slider" id="priceSlider" min="80" max="700" step="20" value="700">
+            <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--slate-400);">
+              <span>$80/nt</span>
+              <span>$700/nt</span>
+            </div>
+          </div>
+
+          <!-- Sorting Dropdown -->
+          <div class="filter-input-group">
+            <label for="hotelSortSelect"><i class="fa-solid fa-arrow-down-wide-short"></i> Sort By</label>
+            <select id="hotelSortSelect">
+              <option value="recommended">Featured & Recommended</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Top Guest Rating</option>
+              <option value="reviews">Most Reviewed</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- Filters Bottom Row: Amenities & Rating -->
+        <div class="filters-bottom-row">
+          
+          <!-- Rating Filter Buttons -->
+          <div class="rating-filter-pills">
+            <span style="font-size: 0.78rem; font-weight: 700; color: var(--slate-500); text-transform: uppercase; margin-right: 4px;">Rating:</span>
+            <button class="rating-pill-btn active" data-rating="0">All</button>
+            <button class="rating-pill-btn" data-rating="4.8">4.8+ ★</button>
+            <button class="rating-pill-btn" data-rating="4.9">4.9+ ★</button>
+            <button class="rating-pill-btn" data-rating="4.95">5.0 ★ Exceptional</button>
+          </div>
+
+          <!-- Amenities Multi-select Chips -->
+          <div class="amenity-toggles">
+            <span style="font-size: 0.78rem; font-weight: 700; color: var(--slate-500); text-transform: uppercase; margin-right: 4px;">Amenities:</span>
+            <span class="amenity-chip" data-amenity="Pool"><i class="fa-solid fa-water-ladder"></i> Pool</span>
+            <span class="amenity-chip" data-amenity="Spa"><i class="fa-solid fa-spa"></i> Spa & Wellness</span>
+            <span class="amenity-chip" data-amenity="Breakfast"><i class="fa-solid fa-utensils"></i> Free Breakfast</span>
+            <span class="amenity-chip" data-amenity="Beach"><i class="fa-solid fa-umbrella-beach"></i> Beachfront</span>
+            <span class="amenity-chip" data-amenity="WiFi"><i class="fa-solid fa-wifi"></i> Free WiFi</span>
+          </div>
+
+          <!-- Reset Filter Button -->
+          <div class="filter-actions-right">
+            <button class="btn-reset-filters" id="btnResetFilters">
+              <i class="fa-solid fa-rotate-left"></i> Reset All
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Results Count Bar -->
+      <div class="results-meta-bar" data-aos="fade-up">
+        <span id="resultsCount">Showing <strong>12</strong> of <strong>12</strong> handpicked stays</span>
+        <span style="font-size: 0.82rem; color: var(--slate-400);"><i class="fa-solid fa-bolt" style="color: #f59e0b;"></i> Real-time availability refreshed</span>
+      </div>
+
+      <!-- Dynamic Hotels Grid -->
+      <div class="hotels-grid" id="hotelsGrid">
+        <!-- Injected via JavaScript data.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       7. Why Choose Us / About Section
+       =================================================================== -->
+  <section class="features-section" id="aboutSection">
+    <div id="whyUsSection" style="position: relative; top: -80px; visibility: hidden;"></div>
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fa-solid fa-shield-halved"></i> The Wanderlust Promise</span>
+        <h2 class="section-title">Why Discerning Travelers Choose Us</h2>
+        <p class="section-subtitle">
+          We combine cutting-edge travel technology with white-glove hospitality to make every vacation seamless, memorable, and worry-free.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="50">
+          <div class="feature-icon-box"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+          <h3 class="feature-title">Best Price Guarantee</h3>
+          <p class="feature-desc">
+            Found a lower publicly available rate elsewhere? We will immediately match it and credit an extra 10% voucher for your next stay.
+          </p>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="feature-icon-box"><i class="fa-solid fa-headset"></i></div>
+          <h3 class="feature-title">24/7 Global Concierge</h3>
+          <p class="feature-desc">
+            Our multi-lingual travel specialists are accessible around the clock via live chat, WhatsApp, and phone to assist with bespoke itineraries.
+          </p>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="250">
+          <div class="feature-icon-box"><i class="fa-solid fa-gem"></i></div>
+          <h3 class="feature-title">Handpicked Luxury</h3>
+          <p class="feature-desc">
+            Every resort, ryokan, and chalet passes a rigorous 120-point quality audit covering cleanliness, culinary standards, and hospitality.
+          </p>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="350">
+          <div class="feature-icon-box"><i class="fa-solid fa-clock-rotate-left"></i></div>
+          <h3 class="feature-title">Free 48-Hour Cancellation</h3>
+          <p class="feature-desc">
+            Plans change. Enjoy 100% refund on most bookings up to 48 hours prior to your check-in date with zero penalty fees.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       8. Customer Testimonials Section & Carousel
+       =================================================================== -->
+  <section class="testimonials-section" id="testimonialsSection">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fa-solid fa-star"></i> Real Traveler Stories</span>
+        <h2 class="section-title">Loved by Over 2.4 Million Explorers</h2>
+        <p class="section-subtitle">
+          Read genuine reviews from verified guests who booked their luxury getaways through Wanderlust.
+        </p>
+      </div>
+
+      <!-- Testimonial Slider Container -->
+      <div class="testimonial-slider-container" data-aos="zoom-in" data-aos-delay="100">
+        <div class="testimonial-track-wrapper">
+          <div class="testimonial-track" id="testimonialsTrack">
+            <!-- Injected via JavaScript data.js -->
+          </div>
+        </div>
+
+        <!-- Slider Navigation Controls -->
+        <div class="testimonial-controls">
+          <button class="slider-btn" id="sliderPrev" aria-label="Previous Testimonial">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <div class="slider-dots" id="sliderDots">
+            <!-- Dot indicators dynamically rendered -->
+          </div>
+          <button class="slider-btn" id="sliderNext" aria-label="Next Testimonial">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       9. Travel Tips & Blog Section
+       =================================================================== -->
+  <section class="travel-tips-section" id="blogSection">
+    <div id="travelTipsSection" style="position: relative; top: -80px; visibility: hidden;"></div>
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fa-solid fa-book-open"></i> Wanderlust Editorial</span>
+        <h2 class="section-title">Inspiration & Insider Travel Guides</h2>
+        <p class="section-subtitle">
+          Curated destination cheat-sheets, packing wisdom, and secret spots written by globe-trotting authors.
+        </p>
+      </div>
+
+      <!-- Dynamic Travel Tips Grid -->
+      <div class="travel-tips-grid" id="travelTipsGrid">
+        <!-- Injected via JavaScript data.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       10. Newsletter Subscription Section
+       =================================================================== -->
+  <section class="newsletter-section" id="newsletterSection">
+    <div class="container">
+      <div class="newsletter-card" data-aos="fade-up">
+        <div class="newsletter-info">
+          <h2>Get 15% Off Your Next Luxury Getaway</h2>
+          <p>
+            Join over 120,000 discerning travelers. Receive members-only flash deals, seasonal discount codes, and secret villa invitations straight to your inbox.
+          </p>
+        </div>
+
+        <div class="newsletter-form-container">
+          <form id="newsletterForm" novalidate>
+            <div class="newsletter-input-group">
+              <input type="email" id="newsletterEmail" placeholder="Enter your email address..." required>
+              <button type="submit" class="newsletter-submit-btn">
+                <i class="fa-solid fa-paper-plane"></i> Subscribe Now
+              </button>
+            </div>
+            <div class="newsletter-feedback" id="newsletterFeedback"></div>
+            <div class="newsletter-privacy-note">
+              <i class="fa-solid fa-lock"></i> We value your privacy. Unsubscribe anytime with one click.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       10. Contact Us Section
+       =================================================================== -->
+  <section class="contact-section" id="contactSection">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fa-solid fa-headset"></i> 24/7 Global Concierge</span>
+        <h2 class="section-title">Contact Our Bespoke Travel Specialists</h2>
+        <p class="section-subtitle">
+          Have inquiries regarding custom itineraries, private island bookings, or corporate retreats? Our global concierges are at your service 24 hours a day.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Information Cards -->
+        <div class="contact-cards-col" data-aos="fade-up">
+          <div class="contact-card">
+            <div class="contact-card-icon"><i class="fa-solid fa-phone"></i></div>
+            <div class="contact-card-info">
+              <h4>Direct Telephone</h4>
+              <p>Toll-free 24/7 dedicated travel hotline</p>
+              <strong>+1 (800) 892-6337</strong>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon"><i class="fa-brands fa-whatsapp"></i></div>
+            <div class="contact-card-info">
+              <h4>WhatsApp Priority Line</h4>
+              <p>Instant messaging with your personal concierge</p>
+              <strong>+1 (555) 019-2834</strong>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="contact-card-info">
+              <h4>Email Inquiries</h4>
+              <p>Typical response time under 5 minutes</p>
+              <strong>concierge@wanderlust-stays.com</strong>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="contact-card-info">
+              <h4>Headquarters</h4>
+              <p>Global Curation Office</p>
+              <strong>450 Lexington Avenue, Penthouse Suite, New York, NY 10017</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form Card -->
+        <div class="contact-form-card" data-aos="fade-up">
+          <div class="contact-form-header">
+            <h3>Send an Inquiry</h3>
+            <p>Fill out the form below and an advisor will connect with you promptly.</p>
+          </div>
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="contact-field">
+              <label for="contactName">Your Name</label>
+              <input type="text" id="contactName" placeholder="e.g. Eleanor Vance" required>
+            </div>
+            <div class="contact-field">
+              <label for="contactEmail">Email Address</label>
+              <input type="email" id="contactEmail" placeholder="e.g. eleanor@example.com" required>
+            </div>
+            <div class="contact-field">
+              <label for="contactSubject">Service Requested</label>
+              <select id="contactSubject">
+                <option value="luxury-stay">Luxury Hotel & Villa Reservation</option>
+                <option value="custom-trip">Custom Multi-Destination Itinerary</option>
+                <option value="private-aviation">Private Jet & Yacht Charters</option>
+                <option value="corporate">Corporate Retreat or Wedding Group</option>
+                <option value="other">General Customer Support</option>
+              </select>
+            </div>
+            <div class="contact-field">
+              <label for="contactMessage">Message or Special Requests</label>
+              <textarea id="contactMessage" placeholder="Tell us about your dream destination, preferred dates, or special preferences..." required></textarea>
+            </div>
+            <div class="contact-feedback" id="contactFeedback"></div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+              <i class="fa-solid fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       11. Comprehensive Footer
+       =================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <img src="assets/stackly_logo_transparent.png" alt="Logo" class="logo-img">
+          </a>
+          <p class="footer-desc">
+            The world's leading luxury stay curation platform. Connecting adventurous souls with handpicked villas, boutique riads, and alpine chalets.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="social-link" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="footer-title">Top Destinations</h4>
+          <ul class="footer-links">
+            <li><a href="#hotelsSection" class="footer-link">Bali Luxury Villas</a></li>
+            <li><a href="#hotelsSection" class="footer-link">Santorini Cliffside</a></li>
+            <li><a href="#hotelsSection" class="footer-link">Maldives Overwater</a></li>
+            <li><a href="#hotelsSection" class="footer-link">Swiss Alps Chalets</a></li>
+            <li><a href="#hotelsSection" class="footer-link">Parisian Palaces</a></li>
+            <li><a href="#hotelsSection" class="footer-link">Kyoto Heritage Ryokans</a></li>
+          </ul>
+        </div>
+
+        <!-- Stays Category -->
+        <div>
+          <h4 class="footer-title">Stay Categories</h4>
+          <ul class="footer-links">
+            <li><a href="#hotelsSection" class="footer-link">Beachfront Resorts</a></li>
+            <li><a href="#hotelsSection" class="footer-link">Eco Safari Lodges</a></li>
+            <li><a href="#hotelsSection" class="footer-link">Skyline Penthouses</a></li>
+            <li><a href="#hotelsSection" class="footer-link">Wellness & Thermal Spas</a></li>
+            <li><a href="#hotelsSection" class="footer-link">Historic Castles</a></li>
+            <li><a href="#hotelsSection" class="footer-link">Private Atolls</a></li>
+          </ul>
+        </div>
+
+        <!-- Company & Support -->
+        <div>
+          <h4 class="footer-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="#whyUsSection" class="footer-link">About Wanderlust</a></li>
+            <li><a href="#whyUsSection" class="footer-link">Best Price Guarantee</a></li>
+            <li><a href="#offersSection" class="footer-link">Promo Vouchers</a></li>
+            <li><a href="#testimonialsSection" class="footer-link">Guest Reviews</a></li>
+            <li><a href="#travelTipsSection" class="footer-link">Editorial Guides</a></li>
+            <li><a href="#" class="footer-link">Careers & Press</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & Security -->
+        <div>
+          <h4 class="footer-title">Global Concierge</h4>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <strong>+1 (800) 892-6337</strong>
+              <div style="font-size: 0.78rem;">Toll-free 24/7 Global Line</div>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <strong>concierge@wanderlust-stays.com</strong>
+              <div style="font-size: 0.78rem;">Avg reply within 5 mins</div>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>450 Lexington Avenue, New York, NY 10017</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Wanderlust Travel Inc. All rights reserved. Built with pure HTML, CSS & JavaScript.
+        </div>
+        <div class="payment-methods">
+          <i class="fa-brands fa-cc-visa" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+          <i class="fa-brands fa-cc-amex" title="American Express"></i>
+          <i class="fa-brands fa-cc-paypal" title="PayPal"></i>
+          <i class="fa-brands fa-cc-apple-pay" title="Apple Pay"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================
+       12. Slide-out Wishlist Drawer
+       =================================================================== -->
+  <aside class="wishlist-drawer" id="wishlistDrawer" aria-label="Wishlist Drawer">
+    <div class="wishlist-drawer-header">
+      <h3 style="font-size: 1.25rem; font-weight: 800; display: flex; align-items: center; gap: 8px;">
+        <i class="fa-solid fa-heart" style="color: var(--accent-rose);"></i> My Wishlist
+      </h3>
+      <button id="wishlistCloseBtn" style="font-size: 1.3rem; color: var(--slate-400); padding: 4px;" aria-label="Close Wishlist">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div style="padding: 12px 24px; background: var(--slate-50); border-bottom: 1px solid var(--slate-200); display: flex; justify-content: space-between; align-items: center;">
+      <span id="wishlistCountText" style="font-size: 0.85rem; font-weight: 700; color: var(--slate-600);">0 Saved Stays</span>
+      <button id="btnClearWishlist" style="font-size: 0.8rem; font-weight: 600; color: var(--accent-rose); display: flex; align-items: center; gap: 4px;">
+        <i class="fa-solid fa-trash-can"></i> Clear All
+      </button>
+    </div>
+
+    <!-- Items List container -->
+    <div class="wishlist-items-container" id="wishlistItemsContainer">
+      <!-- Populated via main.js -->
+    </div>
+
+    <div class="wishlist-drawer-footer">
+      <a href="404.html" class="btn btn-primary" style="width: 100%;">
+        <i class="fa-solid fa-magnifying-glass"></i> Explore More Stays
+      </a>
+    </div>
+  </aside>
+
+  <!-- ===================================================================
+       13. Dynamic Booking & Price Estimation Modal
+       =================================================================== -->
+  <div class="modal-backdrop" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalHeading">
+          <i class="fa-solid fa-shield-halved" style="color: var(--primary);"></i>
+          Instant Reservation & Price Estimation
+        </h3>
+        <button class="modal-close-btn" id="bookingModalClose" aria-label="Close Booking Dialog">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        
+        <!-- Active Hotel Summary Card -->
+        <div class="booking-hotel-summary">
+          <img class="booking-hotel-thumb" id="bookingHotelThumb" src="" alt="Hotel thumbnail">
+          <div style="display: flex; flex-direction: column; justify-content: center; gap: 4px;">
+            <h4 id="bookingHotelTitle" style="font-size: 1.15rem; font-weight: 800; color: var(--dark-900);"></h4>
+            <div id="bookingHotelLoc" style="font-size: 0.82rem; color: var(--slate-500);"></div>
+            <div id="bookingHotelRate" style="font-size: 0.82rem; font-weight: 700; color: var(--dark-800);"></div>
+          </div>
+        </div>
+
+        <form id="bookingReservationForm" novalidate>
+          
+          <!-- Dates & Guests Row -->
+          <div class="booking-form-grid">
+            <div class="booking-field">
+              <label for="bookingCheckIn"><i class="fa-regular fa-calendar"></i> Check-in Date</label>
+              <input type="date" id="bookingCheckIn" required>
+            </div>
+            <div class="booking-field">
+              <label for="bookingCheckOut"><i class="fa-regular fa-calendar-check"></i> Check-out Date</label>
+              <input type="date" id="bookingCheckOut" required>
+            </div>
+            <div class="booking-field">
+              <label for="bookingGuests"><i class="fa-solid fa-user-group"></i> Total Guests</label>
+              <select id="bookingGuests">
+                <option value="1">1 Guest</option>
+                <option value="2" selected>2 Guests</option>
+                <option value="3">3 Guests (+ extra surcharge)</option>
+                <option value="4">4 Guests (+ extra surcharge)</option>
+                <option value="5">5 Guests (+ extra surcharge)</option>
+              </select>
+            </div>
+            <div class="booking-field">
+              <label for="bookingRooms"><i class="fa-solid fa-door-open"></i> Number of Rooms</label>
+              <select id="bookingRooms">
+                <option value="1" selected>1 Suite / Room</option>
+                <option value="2">2 Suites / Rooms</option>
+                <option value="3">3 Suites / Rooms</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Guest Contact Info -->
+          <div class="booking-form-grid">
+            <div class="booking-field">
+              <label for="bookingGuestName"><i class="fa-solid fa-user"></i> Full Legal Name</label>
+              <input type="text" id="bookingGuestName" placeholder="e.g. Alexandra Sterling" required>
+            </div>
+            <div class="booking-field">
+              <label for="bookingGuestEmail"><i class="fa-solid fa-envelope"></i> Email Address</label>
+              <input type="email" id="bookingGuestEmail" placeholder="e.g. alexandra@luxurytravel.com" required>
+            </div>
+          </div>
+
+          <!-- Coupon Code Input -->
+          <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 6px; color: var(--dark-800);">
+            <i class="fa-solid fa-tag" style="color: var(--primary);"></i> Have a Promotional Code?
+          </label>
+          <div class="booking-coupon-input-wrapper">
+            <input type="text" id="couponCodeInput" placeholder="Try SUMMERESCAPE25 or LUXE30VIP">
+            <button type="button" class="btn btn-secondary btn-sm" id="btnApplyCoupon">Apply Code</button>
+          </div>
+          <div id="couponFeedback" style="font-size: 0.8rem; margin-bottom: 14px; min-height: 18px;"></div>
+
+          <!-- Dynamic Price Calculation Card -->
+          <div class="price-breakdown-card">
+            <div style="font-size: 0.95rem; font-weight: 800; color: var(--dark-900); margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+              <span>Transparent Price Breakdown</span>
+              <span style="font-size: 0.75rem; background: var(--white); padding: 3px 8px; border-radius: var(--radius-full); color: var(--primary); font-weight: 700;">No Hidden Fees</span>
+            </div>
+            
+            <div class="breakdown-row">
+              <span>Base Nightly Rate:</span>
+              <span id="bkdBaseRate">$0</span>
+            </div>
+            <div class="breakdown-row">
+              <span>Duration & Rooms:</span>
+              <span id="bkdNights">0 nights × 1 room</span>
+            </div>
+            <div class="breakdown-row">
+              <span>Room Subtotal:</span>
+              <span id="bkdStayTotal">$0</span>
+            </div>
+            <div class="breakdown-row">
+              <span>Taxes & Tourism Fees (12%):</span>
+              <span id="bkdTaxes">$0</span>
+            </div>
+            <div class="breakdown-row discount-row" id="bkdDiscountRow" style="display: none;">
+              <span>Coupon Discount:</span>
+              <span id="bkdDiscountAmount">-$0</span>
+            </div>
+            <div class="breakdown-row total-row">
+              <span>Estimated Total Payable:</span>
+              <span id="bkdFinalTotal" style="color: var(--primary); font-size: 1.4rem;">$0</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+            <i class="fa-solid fa-lock"></i> Confirm Instant Reservation
+          </button>
+          <div style="text-align: center; font-size: 0.75rem; color: var(--slate-400); margin-top: 10px;">
+            <i class="fa-solid fa-shield-check"></i> 256-bit SSL encrypted · Free cancellation up to 48 hours prior
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       13B. Member Login & Sign Up Modal
+       =================================================================== -->
+  <div class="modal-backdrop" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginModalTitle">
+    <div class="modal-dialog auth-modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="loginModalTitle">
+          <img src="assets/stackly_logo_transparent.png" alt="Logo" class="logo-img" style="height: 34px;">
+        </h3>
+        <button class="modal-close-btn" id="loginModalClose" aria-label="Close Login Dialog">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Auth Tabs: Sign In vs Sign Up -->
+        <div class="auth-tabs">
+          <button type="button" class="auth-tab active" id="tabSignIn">Sign In</button>
+          <button type="button" class="auth-tab" id="tabSignUp">Create Account</button>
+        </div>
+
+        <!-- Social Login Buttons -->
+        <div class="auth-social-btns">
+          <button type="button" class="auth-social-btn btn-social-login" data-provider="Google">
+            <i class="fa-brands fa-google" style="color: #ea4335;"></i> Google
+          </button>
+          <button type="button" class="auth-social-btn btn-social-login" data-provider="Apple">
+            <i class="fa-brands fa-apple" style="color: #000;"></i> Apple ID
+          </button>
+        </div>
+
+        <div class="auth-divider">
+          <span>or continue with email</span>
+        </div>
+
+        <!-- Sign In Form -->
+        <form id="loginForm" novalidate>
+          <div class="auth-field" id="authNameField" style="display: none;">
+            <label for="authName">Full Name</label>
+            <div class="auth-input-wrapper">
+              <input type="text" id="authName" placeholder="e.g. Julian Hayes">
+            </div>
+          </div>
+
+          <div class="auth-field">
+            <label for="authEmail">Email Address</label>
+            <div class="auth-input-wrapper">
+              <input type="email" id="authEmail" placeholder="e.g. traveler@luxury.com" required>
+            </div>
+          </div>
+
+          <div class="auth-field">
+            <label for="authPassword">Password</label>
+            <div class="auth-input-wrapper">
+              <input type="password" id="authPassword" placeholder="••••••••" required>
+              <i class="fa-regular fa-eye auth-password-toggle" id="authPasswordToggle"></i>
+            </div>
+          </div>
+
+          <div class="auth-options-row">
+            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+              <input type="checkbox" id="authRememberMe" checked> Remember me
+            </label>
+            <a href="404.html" id="authForgotPwd">Forgot password?</a>
+          </div>
+
+          <div class="auth-feedback" id="authFeedback"></div>
+
+          <button type="submit" class="btn btn-primary btn-lg" id="btnAuthSubmit" style="width: 100%;">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In to Account
+          </button>
+
+          <p style="text-align: center; font-size: 0.75rem; color: var(--slate-400); margin-top: 14px;">
+            By signing in, you agree to Wanderlust's <a href="404.html" style="color: var(--primary); text-decoration: underline;">Terms of Service</a> and <a href="404.html" style="color: var(--primary); text-decoration: underline;">Privacy Policy</a>.
+          </p>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       14. Toast Notification Widget
+       =================================================================== -->
+  <div class="toast-notification" id="toastNotification" role="alert" aria-live="assertive">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMessage">Action completed successfully</span>
+  </div>
+
+  <!-- ===================================================================
+       15. Back to Top Button
+       =================================================================== -->
+  <button class="back-to-top" id="backToTopBtn" aria-label="Back to Top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- ===================================================================
+       16. Scripts & Libraries
+       =================================================================== -->
+  <!-- AOS (Animate On Scroll) JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Sample Data Store -->
+  <script src="js/data.js"></script>
+
+  <!-- Main Application Logic -->
+  <script src="js/main.js"></script>
+</body>
+</html>
